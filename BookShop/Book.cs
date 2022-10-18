@@ -27,19 +27,40 @@ public class Book : IInformation
     public string Title
     {
         get => title;
-        set => title = value ?? throw new ArgumentNullException(nameof(value));
+        set
+        {
+            if(value.Length <2)
+            {
+                throw new ArgumentException("Title must be 2 than character" + "Please enter title again");
+            }
+            title = value; 
+        }
     }
 
     public string Author
     {
         get => author;
-        set => author = value ?? throw new ArgumentNullException(nameof(value));
+        set
+        {
+            if (char.IsDigit(value[value.IndexOf(" ") + 1]))
+            {
+                throw new ArgumentException("Author invalid!");
+            }
+            author = value;
+        }
     }
 
     public virtual decimal Price
     {
         get => price;
-        set => price = value;
+        set
+        {
+            if(value < 0)
+            {
+                throw new ArgumentException("Price must more than value 0");
+            }
+            price = value;
+        }
     }
 
     public int Quantity

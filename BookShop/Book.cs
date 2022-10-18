@@ -1,6 +1,6 @@
 ﻿namespace BookShop;
 
-public class Book 
+public class Book : IInformation
 {
     private int id;
     private string title;
@@ -46,6 +46,11 @@ public class Book
     {
         get => quantity;
         set => quantity = value;
+    }
+
+    public string PrintInformation()
+    {
+        return $"|{GetType()} \t| ID: {Id} | Title: {Title} | Author: {Author} | Price : {Price:f2} | Quantity: {Quantity}     |\n";
     }
 
 }

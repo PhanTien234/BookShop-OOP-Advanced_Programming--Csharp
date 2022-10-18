@@ -98,6 +98,26 @@ public class ShopBook
         }
         Console.WriteLine("|__________________________________________________END___________________________________________________|");
     }
+    
+    public void FindNormalBookById(int id)
+    {
+        Book bookInList = books.FirstOrDefault(i => i.Id.Equals(id));
+        if (bookInList != null )
+        {
+            Console.WriteLine(bookInList.PrintInformation());
+        }
+
+    }
+    
+    public void FindNormalBooksByTitle(string title)
+    {
+        foreach (var b in books.Where(n =>n.Title.Equals(title)))
+        {
+            Console.WriteLine(b.PrintInformation());
+        }
+
+    }
+
 
     
 }

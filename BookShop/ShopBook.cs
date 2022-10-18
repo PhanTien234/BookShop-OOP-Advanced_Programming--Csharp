@@ -82,4 +82,22 @@ public class ShopBook
         if (goldenBookInList != null) return true;
         return false;
     }
+    
+    public void Display()
+    {
+        Console.WriteLine("___________________________________* * *List of Normal Book* * *___________________________________");
+        for (int i = 0; i < books.Count; i++)
+        {
+            Console.Write(books[i].PrintInformation());
+        }
+        Console.WriteLine("__________________________");
+        Console.WriteLine(" _____________________________________* * *List of Golden Book* * *______________________________________");
+        for (int i = 0; i < goldenEditionBooks.Count; i++)
+        {
+            Console.Write(goldenEditionBooks[i].PrintInformation());
+        }
+        Console.WriteLine("|__________________________________________________END___________________________________________________|");
+    }
+
+    
 }

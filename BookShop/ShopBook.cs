@@ -136,7 +136,25 @@ public class ShopBook
         }
     }
     
-    
+    public void RemoveNormalBookById(int id)
+    {
+        Book bookInList = books.FirstOrDefault(i => i.Id.Equals(id));
+        if (bookInList != null)
+        {
+            books.Remove(bookInList);
+            Console.WriteLine("Remove successfully!");
+        }
+    }
+    public void RemoveGoldenBookById(int id)
+    {
+        GoldenEditionBook goldenBookInList = goldenEditionBooks.FirstOrDefault(i => i.Id.Equals(id));
+        if (goldenBookInList != null)
+        {
+            goldenEditionBooks.Remove(goldenBookInList);
+            Console.WriteLine("Remove successfully!");
+        }
+    }
+
 
     
 }

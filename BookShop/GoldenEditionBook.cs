@@ -6,5 +6,10 @@ public class GoldenEditionBook : Book
         base(id, title, author, price, quantity)
     {
     }
-    
+
+    public override decimal Price
+    {
+        get => base.Price * (decimal)1.3;
+        set => base.Price = value;
+    }
 }

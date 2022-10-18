@@ -36,7 +36,7 @@ public class Book : IInformation
         set => author = value ?? throw new ArgumentNullException(nameof(value));
     }
 
-    public decimal Price
+    public virtual decimal Price
     {
         get => price;
         set => price = value;

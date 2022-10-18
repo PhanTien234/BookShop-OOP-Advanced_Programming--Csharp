@@ -1,6 +1,6 @@
 ﻿namespace BookShop;
 
-public class Book
+public class Book 
 {
     private int id;
     private string title;

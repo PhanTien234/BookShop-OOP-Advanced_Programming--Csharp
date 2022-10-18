@@ -154,7 +154,55 @@ public class ShopBook
             Console.WriteLine("Remove successfully!");
         }
     }
+    
+    public void UpdateNormalBookById(int id)
+    {
+        try
+        {
+            Book bookInList = books.FirstOrDefault(i => i.Id.Equals(id));
+            if (bookInList != null)
+            {
+                Console.Write("Enter Title: ");
+                bookInList.Title = Console.ReadLine();
+                Console.Write("Enter Author: ");
+                bookInList.Author = Console.ReadLine();
+                Console.Write("Enter price: ");
+                bookInList.Price = Decimal.Parse(Console.ReadLine());
+                Console.Write("Enter the Quantity: ");
+                bookInList.Quantity = int.Parse(Console.ReadLine());
+                Console.WriteLine("Update successfully!");
+            }
+        }
+        catch (ArgumentException ae)
+        {
+            Console.WriteLine(ae.Message);
+        }
 
+    }
+    public void UpdateGoldenBookById(int id)
+    {
+        try
+        {
+            GoldenEditionBook godenBookInList = goldenEditionBooks.FirstOrDefault(i => i.Id.Equals(id));
+            if (godenBookInList != null)
+            {
+                Console.Write("Enter Title: ");
+                godenBookInList.Title = Console.ReadLine();
+                Console.Write("Enter Author: ");
+                godenBookInList.Author = Console.ReadLine();
+                Console.Write("Enter the Price: ");
+                godenBookInList.Price = Decimal.Parse(Console.ReadLine());
+                Console.Write("Enter quantity: ");
+                godenBookInList.Quantity = int.Parse(Console.ReadLine());
+                Console.WriteLine("Update successfully!");
+            }
+        }
+        catch (ArgumentException ae)
+        {
+            Console.WriteLine(ae.Message);
+        }
+
+    }
 
     
 }

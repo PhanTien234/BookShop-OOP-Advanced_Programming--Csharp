@@ -117,7 +117,26 @@ public class ShopBook
         }
 
     }
+    
+    public void FindGoldenBookById(int id)
+    {
+        GoldenEditionBook goldenBookInList = goldenEditionBooks.FirstOrDefault(i => i.Id.Equals(id));
+        if (goldenBookInList != null )
+        {
+            Console.WriteLine(goldenBookInList.PrintInformation());
+        }
 
+    }
+    
+    public void FindGoldenBooksByTitle(string title)
+    {
+        foreach (var goldenBook in goldenEditionBooks.Where(n =>n.Title.Equals(title)))
+        {
+            Console.WriteLine(goldenBook.PrintInformation());
+        }
+    }
+    
+    
 
     
 }

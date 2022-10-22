@@ -4,81 +4,90 @@ Main();
 
 void Main()
 {
-    ShopBook shop = new ShopBook();
-    int option;
-    while (true)
-    {
-        ShowMenu();
-        Console.WriteLine("Enter your option: ");
-        option = int.Parse(Console.ReadLine());
-        int id;
-        string title;
-        switch (option)
-        {
-            case 1:
-                while (true)
-                {
-                    Console.WriteLine("Enter \"a\" to Input normal book");
-                    Console.WriteLine("Enter \"b\" to Input gold book");
-                    Console.WriteLine("Enter \"e\" to Exit");
-                    Console.WriteLine("Enter your choice ");
-                    string choice = Console.ReadLine();
-                    if (choice.Equals("a"))
-                    {
-                        shop.InputNormalBook();
-                    }
-                    else if(choice.Equals("b"))
-                    {
-                        shop.InputGoldenBook();
-                    }
-                    else if(choice.Equals("e"))
-                    {
-                        break;
-                    }
-                } 
-                break;
-                
-            case 2:
-                shop.Display();
-                break;
-            case 3:
-                id = int.Parse(Console.ReadLine());
-                shop.FindNormalBookById(id);
-                break;
-            case 4:
-                title = Console.ReadLine();
-                shop.FindNormalBooksByTitle(title);
-                break;
-            case 5:
-                id = int.Parse(Console.ReadLine());
-                shop.FindGoldenBookById(id);
-                break;
-            case 6:
-                title = Console.ReadLine();
-                shop.FindGoldenBooksByTitle(title);
-                break;
-            case 7:
-                id = int.Parse(Console.ReadLine());
-                shop.RemoveNormalBookById(id);
-                break;
-            case 8:
-                id = int.Parse(Console.ReadLine());
-                shop.RemoveGoldenBookById(id);
-                break;
-            case 9:
-                id = int.Parse(Console.ReadLine());
-                shop.UpdateNormalBookById(id);
-                break;
-            case 10:
-                id = int.Parse(Console.ReadLine());
-                shop.UpdateGoldenBookById(id);
-                break;
-            case 11:
-                Console.WriteLine("You exited! ");
-                return;
-        }
+   ShopBook shop = new ShopBook();
+            int input = Option.INIT;
+            string inputBook = Option.INPUT_BOOK;
 
-    }
+            shop.AddBook(new Book(1, "The Astronomy Book", "Dorling Kindersley", 24, 2000));
+            shop.AddBook(new Book(2, "The Astronomy Book", "Adams Media", 15, 1000));
+            shop.AddBook(new Book(3, "Cloud Computing", "Guo", 56, 900));
+            shop.AddBook(new Book(4, "Rich Dad Poor Dad", "Robert T. Kiyosaki", 10, 2000));
+            shop.AddBook(new Book(5, "The Power of Habit", "Charles Duhigg", 13, 2005));
+            shop.AddBook(new GoldenEditionBook(50, "Self Discipline", "Dorling Kindersley", 24, 99));
+            shop.AddBook(new GoldenEditionBook(51, "The power of NOW", "Eckhart Tolle", 40, 100));
+            shop.AddBook(new GoldenEditionBook(52, "mindset", "Carol S.Dweck", 60, 30));
+            shop.AddBook(new GoldenEditionBook(53, "Atomic Habits", "James Clear", 50, 20));
+            while (input != Option.EXIT)
+            {
+                input = InterfaceOption.EnterMenuOptions();
+                switch (input)
+                {
+                    case Option.ADD_BOOK:
+                        do
+                        {
+                            inputBook = InterfaceOption.EnterBook();
+                            switch (inputBook)
+                            {
+                                case Option.ADD_NORMAL_BOOK:
+                                    try
+                                    {
+                                        shop.AddBook(new Book(
+                                        InterfaceOption.EnterId(),
+                                        InterfaceOption.EnterTitle(),
+                                        InterfaceOption.EnterAuthor(),
+                                        InterfaceOption.EnterPrice(),
+                                        InterfaceOption.EnterQuantity()));
+                                    }catch(ArgumentException ae)
+                                    {
+                                        InterfaceOption.ToScreen(ae.Message);
+                                    }
+                                    break;
+                                case Option.ADD_GOLD_EDITION_BOOK:
+                                    try
+                                    {
+                                        shop.AddBook(new GoldenEditionBook(
+                                        InterfaceOption.EnterId(),
+                                        InterfaceOption.EnterTitle(),
+                                        InterfaceOption.EnterAuthor(),
+                                        InterfaceOption.EnterPrice(),
+                                        InterfaceOption.EnterQuantity()));
+                                    }catch (ArgumentException ae)
+                                    {
+                                        InterfaceOption.ToScreen(ae.Message);
+                                    }
+                            break;
+                                default:
+                                    break;
+                            }
+                        } while (inputBook != Option.EXIT_ENTER_BOOK);
+                        break;
+                    case Option.SHOW_ALL_BOOKS:
+                        InterfaceOption.ToScreen(shop.PrintInformation());
+                        break;
+                    case Option.SHOW_BY_ID:
+                        InterfaceOption.ToScreen(shop.FindBookById(InterfaceOption.EnterId()));
+                        break;
+                    case Option.SHOW_BY_NAME:
+                        InterfaceOption.ToScreen(shop.FindBooksByName(InterfaceOption.EnterTitle()));
+                        break;
+                    case Option.REMOVE_BOOK:
+                        InterfaceOption.ToScreen(InterfaceOption.ShowMessage(shop.RemoveBookById(InterfaceOption.EnterId())));
+                        break;
+                    case Option.UPDATE_BOOK:
+                        InterfaceOption.ToScreen(InterfaceOption.ShowMessage(shop.UpdateBookById(
+                            InterfaceOption.EnterId(),
+                            InterfaceOption.EnterTitle(),
+                            InterfaceOption.EnterAuthor(),
+                            InterfaceOption.EnterPrice(),
+                            InterfaceOption.EnterQuantity()
+                            )));
+                        break;
+                    case Option.EXIT:
+                        return;
+                    default:
+                        break;
+                }
+            }
     
 }
 

@@ -4,11 +4,11 @@ public class InterfaceOption
 {
     public static void PrintMenu()
         {
-            Console.WriteLine("\t\t\t\t\t=========Welcome to program=========");
-            Console.WriteLine("\t\t\t\t\t====================================");
+            
         }
         public static int EnterMenuOptions()
         {
+            Console.WriteLine("\t\t\t\t============@@@Welcome to program@@@=============");
             Console.WriteLine("\t\t\t\t|\t1: To add books                    \t|");
             Console.WriteLine("\t\t\t\t|\t2: To show information of all books\t|");
             Console.WriteLine("\t\t\t\t|\t3: To show book by id              \t|");
@@ -16,12 +16,13 @@ public class InterfaceOption
             Console.WriteLine("\t\t\t\t|\t5: To remove book by id            \t|");
             Console.WriteLine("\t\t\t\t|\t6: To update book by id            \t|");
             Console.WriteLine("\t\t\t\t|\t10: To exit                        \t|");
+            Console.WriteLine("\t\t\t\t======================******=====================");
             Console.Write("\t\t\t\t\tEnter your choice:  ");
             return int.Parse(Console.ReadLine());
         }
         public static string EnterBook()
         {
-            Console.WriteLine("\t\t\t\t\t====================================");
+            Console.WriteLine("\t\t\t\t================OPTION ADD BOOK=================");
             Console.WriteLine("\t\t\t\t|\t   Enter \"a\" for normal book     \t|");
             Console.WriteLine("\t\t\t\t|\t   Enter \"b\" for GE book         \t|");
             Console.WriteLine("\t\t\t\t|\t   Enter \"v\" to exit             \t|");

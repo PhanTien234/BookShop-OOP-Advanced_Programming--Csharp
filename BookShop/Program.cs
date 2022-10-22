@@ -19,7 +19,9 @@ void Main()
             shop.AddBook(new GoldenEditionBook(53, "Atomic Habits", "James Clear", 50, 20));
             while (input != Option.EXIT)
             {
+                
                 input = InterfaceOption.EnterMenuOptions();
+                Console.WriteLine();
                 switch (input)
                 {
                     case Option.ADD_BOOK:
@@ -30,17 +32,20 @@ void Main()
                             {
                                 case Option.ADD_NORMAL_BOOK:
                                     try
-                                    {
-                                        shop.AddBook(new Book(
-                                        InterfaceOption.EnterId(),
-                                        InterfaceOption.EnterTitle(),
-                                        InterfaceOption.EnterAuthor(),
-                                        InterfaceOption.EnterPrice(),
-                                        InterfaceOption.EnterQuantity()));
-                                    }catch(ArgumentException ae)
-                                    {
-                                        InterfaceOption.ToScreen(ae.Message);
-                                    }
+                                        {
+
+                                            shop.AddBook(new Book(
+                                                InterfaceOption.EnterId(),
+                                                InterfaceOption.EnterTitle(),
+                                                InterfaceOption.EnterAuthor(),
+                                                InterfaceOption.EnterPrice(),
+                                                InterfaceOption.EnterQuantity()));
+
+                                        }
+                                        catch (ArgumentException ae)
+                                        {
+                                            InterfaceOption.ToScreen(ae.Message);
+                                        }
                                     break;
                                 case Option.ADD_GOLD_EDITION_BOOK:
                                     try
@@ -83,6 +88,7 @@ void Main()
                             )));
                         break;
                     case Option.EXIT:
+                        Console.WriteLine("You existed program");
                         return;
                     default:
                         break;

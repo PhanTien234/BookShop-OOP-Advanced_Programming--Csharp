@@ -2,5 +2,5 @@
 
 public interface IInformation
 {
-   string PrintInformation();
+  public string PrintInformation();
 }

@@ -19,14 +19,11 @@ public class Book : IInformation
     }
 
     public int Id
-    {
-        get => id;
-        set => id = value;
-    }
+    {get => id; set => id = value; }
 
     public string Title
-    {
-        get => title;
+    { 
+        get => title; 
         set
         {
             if(value.Length <2)
@@ -38,7 +35,7 @@ public class Book : IInformation
     }
 
     public string Author
-    {
+    { 
         get => author;
         set
         {
@@ -51,8 +48,7 @@ public class Book : IInformation
     }
 
     public virtual decimal Price
-    {
-        get => price;
+    { get => price;
         set
         {
             if(value < 0)

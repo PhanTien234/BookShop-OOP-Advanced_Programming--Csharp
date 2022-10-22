@@ -90,7 +90,8 @@ public class ShopBook
         {
             Console.Write(books[i].PrintInformation());
         }
-        Console.WriteLine("__________________________");
+        Console.WriteLine("|__________________________________________________END______________________________________________|");
+        Console.WriteLine();
         Console.WriteLine(" _____________________________________* * *List of Golden Book* * *______________________________________");
         for (int i = 0; i < goldenEditionBooks.Count; i++)
         {
